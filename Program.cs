@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            string FileName = "Graph.txt";
+            List<string> Rebra = VvodGraphsFromFile.ZapolnMasRebrGraph(FileName);
         }
     }
 }
