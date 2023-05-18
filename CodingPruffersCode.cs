@@ -78,28 +78,30 @@ namespace PruffersCode
         /// <returns>Код прюфера</returns>
         public string MakePrufferCode()
         {
-            string PruffersCode = "";
-            while(edgeList.Count > 1)
+            string PruffersCode = ""; //Код прюфера
+            while(edgeList.Count > 1) //Пока количество ребер больше 1 повторяем
+                                      //цикл формирования кода прюфера
             {
-                FindAllLeaf();
-                int Minleaf = leafOfTreeList.Min();
-                for(int i = 0; i < edgeList.Count; i++)
+                FindAllLeaf(); //Находим все листы дерева
+                int Minleaf = leafOfTreeList.Min(); //Находим минимальный лист дерева
+                for(int i = 0; i < edgeList.Count; i++) //Цикл для удаления ребра с выбранным листом из списка ребер
+                                                        //и добавление отца минимального листа в код прюфера
                 {
-                    if(new Regex($@"^{Minleaf} - \d+").IsMatch(edgeList[i]))
+                    if(new Regex($@"^{Minleaf} - \d+").IsMatch(edgeList[i])) //Для нахождения ребра с листом, если лист на первом месте
                     {
-                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[1] + ",";
-                        edgeList.RemoveAt(i);
+                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[1] + ","; //Добавление отца минимального листа в код прюфера
+                        edgeList.RemoveAt(i); //Удаление ребра из списка
                         break;
                     }
-                    if (new Regex($@"^\d+ - {Minleaf}").IsMatch(edgeList[i]))
+                    if (new Regex($@"^\d+ - {Minleaf}").IsMatch(edgeList[i])) //Для нахождения ребра с листом, если лист на втором месте
                     {
-                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[0] + ",";
-                        edgeList.RemoveAt(i);
+                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[0] + ","; //Добавление отца минимального листа в код прюфера
+                        edgeList.RemoveAt(i); //Удаление ребра из списка
                         break;
                     }
                 }
             }
-            return PruffersCode[..^1];
+            return PruffersCode[..^1]; //Возвращаем весь код прюфера, кроме последнего элемента, так как там всегда запятая
         }
     }
 }
