@@ -24,7 +24,7 @@ namespace PruffersCode
         /// </summary>
         /// <param name="FileName">Путь к файлу</param>
         /// <returns>Код прюфера</returns>
-        public static string GetPruffersCodeFromFile(string FileName) => new StreamReader(FileName).ReadToEnd();
+        public static List<int> GetPruffersCodeFromFile(string FileName) => new StreamReader(FileName).ReadToEnd().Split(",").Select(a => int.Parse(a)).ToList();
         /// <summary>
         /// Метод для объединения элементов списка
         /// </summary>

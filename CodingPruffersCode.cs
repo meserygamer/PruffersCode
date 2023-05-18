@@ -87,19 +87,19 @@ namespace PruffersCode
                 {
                     if(new Regex($@"^{Minleaf} - \d+").IsMatch(edgeList[i]))
                     {
-                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[1];
+                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[1] + ",";
                         edgeList.RemoveAt(i);
                         break;
                     }
                     if (new Regex($@"^\d+ - {Minleaf}").IsMatch(edgeList[i]))
                     {
-                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[0];
+                        PruffersCode = PruffersCode + edgeList[i].Split(" - ")[0] + ",";
                         edgeList.RemoveAt(i);
                         break;
                     }
                 }
             }
-            return PruffersCode;
+            return PruffersCode[..^1];
         }
     }
 }
