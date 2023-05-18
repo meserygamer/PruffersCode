@@ -20,6 +20,12 @@ namespace PruffersCode
             return Mas;
         }
         /// <summary>
+        /// Функция для считывания расшифруемого кода прюфера из файла
+        /// </summary>
+        /// <param name="FileName">Путь к файлу</param>
+        /// <returns>Код прюфера</returns>
+        public static string GetPruffersCodeFromFile(string FileName) => new StreamReader(FileName).ReadToEnd();
+        /// <summary>
         /// Метод для объединения элементов списка
         /// </summary>
         /// <param name="list">Список для объединения элементов</param>

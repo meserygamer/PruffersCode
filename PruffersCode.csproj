@@ -9,10 +9,14 @@
 
   <ItemGroup>
     <None Remove="Graph.txt" />
+    <None Remove="PruffersCode.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Graph.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PruffersCode.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
